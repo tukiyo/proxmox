@@ -1,0 +1,60 @@
+--- pvemanagerlib.js.orig	2013-10-14 16:01:34.000000000 +0900
++++ pvemanagerlib.js	2013-10-23 10:37:06.711422262 +0900
+@@ -240,7 +240,7 @@
+ 
+     render_language: function (value) {
+ 	if (!value) {
+-	    return PVE.Utils.defaultText + ' (English)';
++	    return PVE.Utils.defaultText + ' (Japanese)';
+ 	}
+ 	var text = PVE.Utils.language_map[value];
+ 	if (text) {
+@@ -452,18 +452,18 @@
+ 		var data = response.result.data;
+ 
+ 		if (data.status !== 'Active') {
+-		    Ext.Msg.show({
+-			title: gettext('No valid subscription'),
+-			icon: Ext.Msg.WARNING,
+-			msg: PVE.Utils.noSubKeyHtml,
+-			buttons: Ext.Msg.OK,
+-			callback: function(btn) {
+-			    if (btn !== 'ok') {
+-				return;
+-			    }
+-			    orig_cmd();
+-			}
+-		    });
++		    //Ext.Msg.show({
++		    //    title: gettext('No valid subscription'),
++		    //    icon: Ext.Msg.WARNING,
++		    //    msg: PVE.Utils.noSubKeyHtml,
++		    //    buttons: Ext.Msg.OK,
++		    //    callback: function(btn) {
++		    //        if (btn !== 'ok') {
++		    //    	return;
++		    //        }
++		            orig_cmd();
++		    //    }
++		    //});
+ 		} else {
+ 		    orig_cmd();
+ 		}
+@@ -5793,7 +5793,7 @@
+ 		    {   
+ 			xtype: 'pveLanguageSelector',
+ 			fieldLabel: gettext('Language'), 
+-			value: Ext.util.Cookies.get('PVELangCookie') || 'en',
++			value: Ext.util.Cookies.get('PVELangCookie') || 'ja',
+ 			name: 'lang',
+ 			submitValue: false,
+ 			listeners: {
+@@ -15927,7 +15927,7 @@
+             title: gettext('Templates'),
+ 	    layout: 'fit',
+ 	    width: 600,
+-	    height: 400,
++	    height: '100%',
+ 	    items: grid,
+ 	    buttons: [ submitBtn ]
+ 	});
