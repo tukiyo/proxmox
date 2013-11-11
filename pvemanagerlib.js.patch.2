@@ -1,46 +1,15 @@
---- pvemanagerlib.js.orig	2013-10-14 16:01:34.000000000 +0900
-+++ pvemanagerlib.js	2013-10-23 10:37:06.711422262 +0900
-@@ -240,7 +240,7 @@
- 
-     render_language: function (value) {
- 	if (!value) {
--	    return PVE.Utils.defaultText + ' (English)';
-+	    return PVE.Utils.defaultText + ' (Japanese)';
- 	}
- 	var text = PVE.Utils.language_map[value];
- 	if (text) {
-@@ -452,18 +452,18 @@
+--- pvemanagerlib.js.orig	2013-11-08 16:21:41.000000000 +0900
++++ pvemanagerlib.js	2013-11-11 14:04:26.549798486 +0900
+@@ -479,7 +479,7 @@
+ 	    success: function(response, opts) {
  		var data = response.result.data;
  
- 		if (data.status !== 'Active') {
--		    Ext.Msg.show({
--			title: gettext('No valid subscription'),
--			icon: Ext.Msg.WARNING,
--			msg: PVE.Utils.noSubKeyHtml,
--			buttons: Ext.Msg.OK,
--			callback: function(btn) {
--			    if (btn !== 'ok') {
--				return;
--			    }
--			    orig_cmd();
--			}
--		    });
-+		    //Ext.Msg.show({
-+		    //    title: gettext('No valid subscription'),
-+		    //    icon: Ext.Msg.WARNING,
-+		    //    msg: PVE.Utils.noSubKeyHtml,
-+		    //    buttons: Ext.Msg.OK,
-+		    //    callback: function(btn) {
-+		    //        if (btn !== 'ok') {
-+		    //    	return;
-+		    //        }
-+		            orig_cmd();
-+		    //    }
-+		    //});
- 		} else {
- 		    orig_cmd();
- 		}
-@@ -5793,7 +5793,7 @@
+-		if (data.status !== 'Active') {
++		if (data.status === 'Active') {
+ 		    Ext.Msg.show({
+ 			title: gettext('No valid subscription'),
+ 			icon: Ext.Msg.WARNING,
+@@ -5821,7 +5821,7 @@
  		    {   
  			xtype: 'pveLanguageSelector',
  			fieldLabel: gettext('Language'), 
@@ -49,7 +18,7 @@
  			name: 'lang',
  			submitValue: false,
  			listeners: {
-@@ -15927,7 +15927,7 @@
+@@ -15955,7 +15955,7 @@
              title: gettext('Templates'),
  	    layout: 'fit',
  	    width: 600,
